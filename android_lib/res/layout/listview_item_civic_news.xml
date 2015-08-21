@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+    <include
+        android:id="@+id/initiator_layout"
+        layout="@layout/list_item_initiator"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="40dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:descendantFocusability="blocksDescendants">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:id="@+id/text"
+            android:textSize="14dp"
+            android:textColor="@color/ui_text_gray_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:text="For further details contact Rohan : 9983484759"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:textColor="@color/ui_text_gray_dark"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+    <include
+        android:id="@+id/initiator_footer"
+        layout="@layout/list_item_actions" />
+</LinearLayout>

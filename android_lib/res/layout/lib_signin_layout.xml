@@ -1,0 +1,108 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#eee"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    tools:context=".SearchActivity" >
+<!--<ScrollView-->
+    <!--android:id="@+id/scrollView"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent">-->
+<!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:padding="20dip"-->
+    <!--tools:context=".SearchActivity" >-->
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ld"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/enter_number"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/enter_number"
+        android:background="#ffd3d3d3"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:inputType="number"
+        android:hint="Type your Mobile Number"
+        android:ems="10"
+        android:maxLength="10"
+        android:textColor="#444444"
+        android:singleLine="true">
+    </EditText>
+    <TextView
+        android:id="@+id/no_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#EB4C4C"
+        android:visibility="gone"
+        android:textStyle="italic"
+        android:layout_below="@+id/enter_number"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="No Internet Connection"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/info_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#BCBEC0"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/no_connection"
+        android:text="You will receive an SMS Verification Code on this mobile number"/>
+
+
+    <com.dd.processbutton.iml.ActionProcessButton
+        android:id="@+id/button1"
+        android:layout_below="@+id/info_txt"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:text="Enter"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        custom:pb_colorComplete="@color/green_complete"
+        custom:pb_colorNormal="@android:color/holo_blue_dark"
+        custom:pb_colorPressed="#ff005982"
+        custom:pb_colorProgress="@color/purple_progress"
+        custom:pb_textComplete="Success"
+        custom:pb_textProgress="Loading"
+        custom:pb_textError="Retry"
+        custom:pb_colorError="@color/red_error" />
+
+    <com.dd.processbutton.iml.ActionProcessButton
+        android:id="@+id/g_plus_button"
+        android:layout_below="@+id/info_txt"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:text="Enter"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        custom:pb_colorComplete="@color/green_complete"
+        custom:pb_colorNormal="@android:color/holo_blue_dark"
+        custom:pb_colorPressed="#ff005982"
+        custom:pb_colorProgress="@color/purple_progress"
+        custom:pb_textComplete="Success"
+        custom:pb_textProgress="Loading"
+        custom:pb_textError="Retry"
+        custom:pb_colorError="@color/red_error" />
+</RelativeLayout>
+<!--</ScrollView>-->
+<!--</LinearLayout>-->

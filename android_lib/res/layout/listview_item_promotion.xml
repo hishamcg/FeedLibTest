@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+    <include
+        android:id="@+id/initiator_layout"
+        layout="@layout/list_item_initiator"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp">
+        <RelativeLayout
+            android:id="@+id/RL_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/container_shadow">
+            <ImageView
+                android:id="@+id/display_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/black_gradient_bottom"
+                android:layout_alignBottom="@+id/display_image"
+                android:layout_alignTop="@+id/display_image"/>
+            <ImageView
+                android:id="@+id/call_action"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_action_call"
+                android:layout_margin="5dp"
+                android:layout_alignBottom="@+id/display_image"
+                android:layout_alignRight="@+id/display_image" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="5"
+            android:ellipsize="end"
+            android:id="@+id/text"
+            android:text="hello"
+            android:textColor="@color/ui_text_gray_dark"
+            android:padding="5dp"/>
+    </LinearLayout>
+    <include
+        android:id="@+id/initiator_footer"
+        layout="@layout/list_item_actions" />
+</LinearLayout>

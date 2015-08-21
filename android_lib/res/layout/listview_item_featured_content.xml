@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/display_image"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/display_image"
+                android:layout_alignTop="@+id/display_image"
+                android:background="#5000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Signs You'r Foodie!"
+                android:layout_alignBottom="@+id/display_image"
+                android:id="@+id/subject"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="16dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:padding="10dp"/>
+
+
+            <LinearLayout
+                android:id="@+id/LL_cat"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:gravity="end">
+                <ImageView
+                    android:id="@+id/ribbon_img"
+                    android:src="@drawable/ribbon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12 Mins"
+                    android:textColor="#fff"
+                    android:textSize="12dp"
+                    android:id="@+id/time"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <RelativeLayout
+                android:layout_below="@+id/LL_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:id="@+id/publisher_image"
+                    android:src="@drawable/company"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="0dp"
+                    android:layout_alignTop="@id/publisher_image"
+                    android:layout_alignBottom="@id/publisher_image"
+                    android:src="@drawable/circle_placeholder"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/publisher_image"
+                    android:orientation="vertical">
+                    <TextView
+                        android:textColor="@color/ui_orange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:id="@+id/publisher_name"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_marginTop="4dp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:textStyle="bold"
+                        android:textSize="12dp"
+                        android:textColor="@color/ui_text_gray_dark"
+                        android:id="@+id/neighbourhood"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="RelativeLayout is a view group that displays child views in relative positions."
+                android:textSize="14dp"
+                android:maxLines="8"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <include
+        android:id="@+id/initiator_footer"
+        layout="@layout/list_item_actions" />
+</LinearLayout>

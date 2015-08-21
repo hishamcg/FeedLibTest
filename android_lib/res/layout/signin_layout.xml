@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:padding="40dp">
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/fm_logo_txt"
+        android:padding="40dp"
+        />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        
+        <com.andreabaccega.widget.FormEditText
+            custom:emptyErrorString="Email cannot be blank"
+            android:id="@+id/user_email"
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:textSize="15sp"
+            android:inputType="textEmailAddress"
+            android:background="#ccc"
+            android:hint="Email"
+            android:paddingLeft="5dp"/>
+        <com.andreabaccega.widget.FormEditText
+            custom:emptyErrorString="Password cannot be blank"
+            android:id="@+id/user_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:textSize="15sp"
+            android:background="#ccc"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
+            android:hint="Password"
+            android:paddingLeft="5dp"/>
+        <com.dd.processbutton.iml.ActionProcessButton
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:text="Enter"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            custom:pb_colorComplete="@color/green_complete"
+            custom:pb_colorNormal="@android:color/holo_orange_dark"
+            custom:pb_colorPressed="#ff005982"
+            custom:pb_colorProgress="@color/purple_progress"
+            custom:pb_textComplete="Success"
+            custom:pb_textProgress="Loading"
+            custom:pb_textError="Retry"
+            custom:pb_colorError="@color/red_error" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btn_google_signin"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="45dp"
+            android:enabled="false" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

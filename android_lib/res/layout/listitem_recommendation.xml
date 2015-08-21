@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/feed_container_shadow"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:gravity="end">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:id="@+id/publisher_name"
+                android:textColor="#a111"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="5dp"
+                android:text="recommends"
+                />
+        </LinearLayout>
+        <include
+            android:id="@+id/initiator_layout"
+            layout="@layout/list_item_initiator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal"
+            >            <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="wrap_content"
+            android:maxHeight="100sp"
+            android:paddingRight="5dp"
+            android:layout_margin="5dp"
+            android:id="@+id/display_image"
+            />
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:padding="5dp"
+                android:maxLines="10"
+                android:ellipsize="end"
+                android:textSize="16dp"
+                android:textColor="#a111"
+                android:text="Olympic tables is a ."/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<include-->
+        <!--android:id="@+id/initiator_footer"-->
+        <!--layout="@layout/list_item_actions"-->
+        <!--/>-->
+</RelativeLayout>
