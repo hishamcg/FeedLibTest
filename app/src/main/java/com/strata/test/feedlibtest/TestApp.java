@@ -2,9 +2,9 @@ package com.strata.test.feedlibtest;
 
 import android.app.Application;
 
-import com.strata.android_lib.rest.LibRestClient;
-import com.strata.android_lib.utils.LibSharedPref;
-import com.strata.android_lib.utils.LibShowToast;
+import com.strata.firstmyle_lib.rest.LibRestClient;
+import com.strata.firstmyle_lib.utils.LibSharedPref;
+import com.strata.firstmyle_lib.utils.LibShowToast;
 
 /**
  * Created by hisham on 9/7/15.
@@ -16,7 +16,7 @@ public class TestApp extends Application{
 
         LibSharedPref.initialize(this);
         LibShowToast.initialize(this);
-        LibRestClient.init("","http://www.firstmiler.com/api/consumer/v1/login");
+        LibRestClient.init("", "http://10.0.0.37:4000/api/v1/fm_consumer");
     }
 }
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.strata.android_lib">
+          package="com.strata.firstmyle_lib">
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="21" />

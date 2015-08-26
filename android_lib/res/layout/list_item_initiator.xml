@@ -81,7 +81,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:id="@+id/publisher_image"
-            android:src="@drawable/company"
+            android:src="@drawable/image_placeholder"
             android:scaleType="centerCrop"
             android:layout_marginRight="5dp"/>
         <ImageView

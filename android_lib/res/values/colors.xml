@@ -14,4 +14,9 @@
     <color name="dark_gray">#ccc</color>
 
     <color name="gray">#eee</color>
+
+    <color name="ColorPrimary">#00897B</color>
+    <color name="ColorPrimaryIcon">#ff00c7b2</color>
+    <color name="ColorPrimaryDark">#00695C</color>
+    <color name="tabsScrollColor">#004D40</color>
 </resources>

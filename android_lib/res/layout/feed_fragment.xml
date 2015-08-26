@@ -12,14 +12,14 @@
         android:divider="#0000"
         android:dividerHeight="10dp"
         android:background="#eee"/>
-    <!--<com.melnykov.fab.FloatingActionButton-->
-        <!--android:id="@+id/create_dine_run"-->
-        <!--android:layout_width="30dip"-->
-        <!--android:layout_height="30dip"-->
-        <!--android:layout_gravity="bottom|end"-->
-        <!--android:layout_margin="20dp"-->
-        <!--android:padding="10dip"-->
-        <!--android:src="@mipmap/fab_add"-->
-        <!--fab:fab_colorNormal="@color/ColorPrimaryDark"-->
-        <!--fab:fab_colorPressed="@color/ColorPrimary" />-->
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/create_dine_run"
+        android:layout_width="30dip"
+        android:layout_height="30dip"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:padding="10dip"
+        android:src="@drawable/fab_add"
+        fab:fab_colorNormal="@color/ColorPrimaryDark"
+        fab:fab_colorPressed="@color/ColorPrimary" />
 </FrameLayout>
