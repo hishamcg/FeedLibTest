@@ -72,12 +72,11 @@ public class LibFeedFragment extends Fragment implements PostSummaryInflater.Inf
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent in = new Intent(getActivity(), FeedDetailActivity.class);
-//                in.putExtra("feed", new Gson().toJson(feedLib.get(position)));
-//                startActivity(in);
-                if (listener != null) {
-                    listener.onClick(ActionEnums.DETAIL, postSummaries.get(position));
-                }
+                FeedPost feedPost = postSummaries.get(position);
+                mListener.onDetailClick(feedPost);
+//                if (listener != null) {
+//                    listener.onClick(ActionEnums.DETAIL, feedPost);
+//                }
             }
         });
 
@@ -90,6 +89,7 @@ public class LibFeedFragment extends Fragment implements PostSummaryInflater.Inf
                 }
             }
         });
+
 
         LibRestClient.getRouteService().getFeeds(callback);
 
@@ -141,7 +141,8 @@ public class LibFeedFragment extends Fragment implements PostSummaryInflater.Inf
 
     public interface OnFragmentInteractionListener {
         void onInitiatorClick(FeedPost feed);
-        void onCommentClick(FeedPost temp_feed);
+        void onCommentClick(FeedPost feed);
+        void onDetailClick(FeedPost feed);
     }
 
     @Override

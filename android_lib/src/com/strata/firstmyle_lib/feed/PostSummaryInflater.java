@@ -86,6 +86,6 @@ public class PostSummaryInflater{
 
     public interface InflaterCallback {
         void onInitiatorClick(FeedPost feed);
-        void onCommentClick(FeedPost temp_feed);
+        void onCommentClick(FeedPost feed);
     }
 }

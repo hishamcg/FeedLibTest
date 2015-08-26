@@ -3,6 +3,7 @@ package com.strata.firstmyle_lib.feed.summary_view;
 import android.content.Context;
 import android.view.View;
 
+import com.strata.firstmyle_lib.R;
 import com.strata.firstmyle_lib.feed.model.FeedPost;
 import com.strata.firstmyle_lib.feed.views.BloggerScribbleView;
 import com.strata.firstmyle_lib.feed.views.PostView;

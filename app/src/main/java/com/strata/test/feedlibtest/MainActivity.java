@@ -90,4 +90,12 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
     public void onCommentClick(FeedPost temp_feed) {
 
     }
+
+    @Override
+    public void onDetailClick(FeedPost feed) {
+        LibShowToast.setText("Athamma im in detail");
+        Intent in = new Intent(context,DetailPage.class);
+        in.putExtra("sPost", new Gson().toJson(feed));
+        context.startActivity(in);
+    }
 }
