@@ -17,6 +17,6 @@ public class CivicProblemSummary extends PostSummary {
 
         CivicProblemView civicProblemView = new CivicProblemView(context,sPost,listener);
 
-        return civicProblemView.getView();
+        return civicProblemView;
     }
 }

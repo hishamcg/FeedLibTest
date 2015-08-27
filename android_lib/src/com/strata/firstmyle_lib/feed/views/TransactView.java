@@ -74,8 +74,4 @@ public class TransactView extends PostView {
         ribbon.setImageResource(drawable);
 
     }
-
-    public View getView(){
-        return rowView;
-    }
 }

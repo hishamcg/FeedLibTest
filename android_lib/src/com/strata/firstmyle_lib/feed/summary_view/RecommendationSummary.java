@@ -17,6 +17,6 @@ public class RecommendationSummary extends PostSummary {
 
         RecommendationView recommendationView = new RecommendationView(context,sPost,listener);
 
-        return recommendationView.getView();
+        return recommendationView;
     }
 }

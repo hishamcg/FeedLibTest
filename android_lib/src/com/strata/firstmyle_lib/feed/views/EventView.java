@@ -86,8 +86,4 @@ public class EventView extends PostView {
         ribbon.setImageResource(drawable);
 
     }
-
-    public View getView(){
-        return rowView;
-    }
 }

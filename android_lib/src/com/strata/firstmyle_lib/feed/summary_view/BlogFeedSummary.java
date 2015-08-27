@@ -17,6 +17,6 @@ public class BlogFeedSummary extends PostSummary {
 
         BlogFeedView blogFeedView = new BlogFeedView(context,sPost,listener);
 
-        return blogFeedView.getView();
+        return blogFeedView;
     }
 }
