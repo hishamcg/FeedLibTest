@@ -54,8 +54,4 @@ public class RecommendationView extends PostView {
         ribbon.setImageResource(drawable);
 
     }
-
-    public View getView(){
-        return rowView;
-    }
 }

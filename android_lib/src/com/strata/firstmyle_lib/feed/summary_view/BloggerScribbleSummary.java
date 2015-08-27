@@ -18,6 +18,6 @@ public class BloggerScribbleSummary extends PostSummary {
 
         BloggerScribbleView bloggerScribbleView = new BloggerScribbleView(context,sPost,listener);
 
-        return bloggerScribbleView.getView();
+        return bloggerScribbleView;
     }
 }

@@ -81,9 +81,4 @@ public class BctcView extends PostView{
                 item_container.addView(tmp);
             }
     }
-
-    public View getView(){
-        return rowView;
-    }
-
 }

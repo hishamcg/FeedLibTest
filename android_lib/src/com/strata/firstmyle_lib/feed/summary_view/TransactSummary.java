@@ -17,6 +17,6 @@ public class TransactSummary extends PostSummary {
 
         TransactView transactView = new TransactView(context,sPost,listener);
 
-        return transactView.getView();
+        return transactView;
     }
 }

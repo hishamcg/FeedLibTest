@@ -17,6 +17,6 @@ public class EventSummary extends PostSummary {
 
         EventView eventView = new EventView(context,sPost,listener);
 
-        return eventView.getView();
+        return eventView;
     }
 }

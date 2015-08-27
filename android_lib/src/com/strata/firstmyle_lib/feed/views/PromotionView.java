@@ -70,7 +70,4 @@ public class PromotionView extends PostView {
 
     }
 
-    public View getView(){
-        return rowView;
-    }
 }

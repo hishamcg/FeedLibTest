@@ -54,8 +54,4 @@ public class BloggerScribbleView extends PostView {
         ribbon.setImageResource(drawable);
 
     }
-
-    public View getView(){
-        return rowView;
-    }
 }

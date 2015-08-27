@@ -18,6 +18,6 @@ public class BctcSummary extends PostSummary {
 
         BctcView bctcView = new BctcView(context,sPost,listener);
 
-        return bctcView.getView();
+        return bctcView;
     }
 }
