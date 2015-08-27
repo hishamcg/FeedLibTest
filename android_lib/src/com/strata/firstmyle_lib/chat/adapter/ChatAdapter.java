@@ -1,135 +1,68 @@
 package com.strata.firstmyle_lib.chat.adapter;
 
 import android.content.Context;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 
-import com.strata.firstmyle_lib.feed.PostSummaryInflater;
-import com.strata.firstmyle_lib.feed.model.FeedPost;
-import com.strata.firstmyle_lib.feed.summary_view.PostSummary;
-import com.strata.firstmyle_lib.feed.views.PostView;
+import com.strata.firstmyle_lib.chat.ChatInflater;
+import com.strata.firstmyle_lib.chat.model.Reply;
+import com.strata.firstmyle_lib.chat.views.ChatView;
 import com.strata.firstmyle_lib.utils.LibShowToast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-public class ChatAdapter extends BaseAdapter implements Filterable {
-    private List<FeedPost> posts;
-    private List<FeedPost> tempFeeds = new ArrayList<>();
-    private PostSummaryInflater helper;
-    private boolean isFiltered = false;
-    private Context context;
-    private PostView.ActionClickListener listener;
+public class ChatAdapter extends BaseAdapter{
+	private Context context;
+    private String publisher_id;
+	private ArrayList<Reply> reply_list;
+    private AdapterCallback adapterCallback;
+    private ChatInflater helper;
+    private ChatView.ChatClickListener listener;
 
-    public ChatAdapter(Context context, List<FeedPost> posts, PostView.ActionClickListener listener,
-                       HashMap<String, Class<? extends PostSummary>> hashMap){
-        this.posts = posts;
-        this.tempFeeds.addAll(posts);
-        this.context = context;
+	public ChatAdapter(Context context, ArrayList<Reply> reply_list,ChatView.ChatClickListener listener,String publisher_id) {
+
+		this.context = context;
+		this.reply_list = reply_list;
+        this.helper = new ChatInflater(context);
         this.listener = listener;
-        this.helper = new PostSummaryInflater(context);
-        if(hashMap!=null)
-            helper.AddHashMap(hashMap);
-    }
-    @Override
-    public int getCount() {
-        return posts.size();
+        this.publisher_id = publisher_id;
+	}
+
+    public interface AdapterCallback {
+        void onVoteClick();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return posts.get(position);
-    }
+	@Override
+	public int getCount() {
+		return reply_list.size();
+	}
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+	@Override
+	public Object getItem(int position) {
+		return reply_list.get(position);
+	}
 
-    @Override
-    public View getView(int position, View rowView, ViewGroup parent) {
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(final int position, View rowView, ViewGroup parent) {
         try {
-            rowView =helper.FillView(posts.get(position),listener);
+            rowView = helper.FillView(reply_list.get(position),listener,publisher_id).getRootView();
             return rowView;
         }catch (Exception e){
-            LibShowToast.setText(e.getMessage());
+            throw new ClassCastException("View return problem in ChatAdapter\n"+e.getMessage());
+            //LibShowToast.setText(e.getMessage());
         }
-        return new View(context);
+        //return new View(context);
+	}
+	
+	public int getViewTypeCount() {
+	    return 5;
+	}
 
-    }
-
-    public int getViewTypeCount() {
-        return 7;
-    }
-
-    @Override
-    public Filter getFilter() {
-        return mItemFilter;
-    }
-    private final Filter mItemFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-
-            String filterString = constraint.toString();
-            FilterResults results = new FilterResults();
-            final ArrayList<FeedPost> nfeeds = new ArrayList<>();
-            Log.d("typedText", filterString);
-
-            if(!filterString.equals("All")) {
-                for (FeedPost f : tempFeeds) {
-                    if (f.getType().equals(filterString))
-                        nfeeds.add(f);
-                }
-                isFiltered = true;
-            }else{
-                nfeeds.addAll(tempFeeds);
-                isFiltered = false;
-            }
-
-            if(nfeeds.isEmpty()){
-                LibShowToast.setTextThread("No posts on " + filterString + " for you.");
-            }
-
-            results.values = nfeeds;
-            results.count = nfeeds.size();
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            if (results.values != null){
-                ArrayList<FeedPost> tmp = (ArrayList<FeedPost>) results.values;
-                posts.clear();
-                posts.addAll(tmp);
-                notifyDataSetChanged();
-            }
-        }
-
-    };
-
-
-    public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
-    }
-
-    public boolean removeFilter() {
-        if(isFiltered){
-            posts.clear();
-            posts.addAll(tempFeeds);
-            notifyDataSetChanged();
-            isFiltered = false;
-            return true;
-        }else
-            return false;
-    }
-
-    public void updateTempFeed(List<FeedPost> feeds){
-        tempFeeds.clear();
-        tempFeeds.addAll(feeds);
-    }
 }

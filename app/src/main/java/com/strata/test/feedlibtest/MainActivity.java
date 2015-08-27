@@ -9,6 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.gson.Gson;
+import com.strata.firstmyle_lib.chat.ChatInitializer;
+import com.strata.firstmyle_lib.chat.fragment.LibChatFragment;
+import com.strata.firstmyle_lib.chat.model.Reply;
+import com.strata.firstmyle_lib.chat.views.ChatView;
 import com.strata.firstmyle_lib.feed.FeedInitializer;
 import com.strata.firstmyle_lib.feed.fragment.LibFeedFragment;
 import com.strata.firstmyle_lib.feed.model.FeedPost;
@@ -21,7 +25,8 @@ import com.strata.firstmyle_lib.utils.LibShowToast;
 import java.util.HashMap;
 
 
-public class MainActivity extends AppCompatActivity implements LibFeedFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements LibFeedFragment.OnFragmentInteractionListener,
+                                                                LibChatFragment.OnFragmentInteractionListener{
 
     private static Context context;
     @Override
@@ -29,16 +34,41 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-        HashMap<String, Class<? extends PostSummary>> hashMap = new HashMap<>();
-        hashMap.put("Event", EventSummary.class);
-        FeedInitializer fed = new FeedInitializer(listener,hashMap);
+//        HashMap<String, Class<? extends PostSummary>> hashMap = new HashMap<>();
+//        FeedInitializer fed = new FeedInitializer(listener,hashMap);
+//
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        fragmentManager.beginTransaction()
+//                .replace(R.id.fragment, fed.getFeed())
+//                .commit();
+
+        HashMap<String, Class<? extends ChatView>> hashMap = new HashMap<>();
+        ChatInitializer fed = new ChatInitializer(chat_listener,hashMap);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment, fed.getFeed())
+                .replace(R.id.fragment, fed.getChat())
                 .commit();
 
     }
+
+    private static final ChatView.ChatClickListener chat_listener = new ChatView.ChatClickListener() {
+        @Override
+        public void onClick(ActionEnums action, Reply reply) {
+
+            switch (action) {
+                case DETAIL:
+                    Intent in = new Intent(context,DetailPage.class);
+                    in.putExtra("sPost", new Gson().toJson(reply));
+                    context.startActivity(in);
+                    break;
+                default:
+                    LibShowToast.setText("Clicked => " + action);
+                    break;
+
+            }
+        }
+    };
 
     private static final PostView.ActionClickListener listener = new PostView.ActionClickListener() {
         @Override
@@ -97,5 +127,10 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         Intent in = new Intent(context,DetailPage.class);
         in.putExtra("sPost", new Gson().toJson(feed));
         context.startActivity(in);
+    }
+
+    @Override
+    public void onFragmentInteraction() {
+
     }
 }
