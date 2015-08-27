@@ -16,7 +16,7 @@ public class TestApp extends Application{
 
         LibSharedPref.initialize(this);
         LibShowToast.initialize(this);
-        LibRestClient.init("", "http://10.0.0.21:4000/api/v1/fm_consumer");
+        LibRestClient.init("", "http://10.0.0.10:4000/api/v1/fm_consumer");
     }
 }
 
