@@ -1,6 +1,7 @@
 package com.strata.firstmyle_lib.rest.service;
 
 import com.strata.firstmyle_lib.chat.model.ReplyMessage;
+import com.strata.firstmyle_lib.create_post.model.Biztag;
 import com.strata.firstmyle_lib.feed.model.FeedPost;
 import com.strata.firstmyle_lib.model.AuthToken;
 
@@ -28,4 +29,7 @@ public interface LibRouteService {
 
     @GET("/send_message.json")
     void sendMessage(@Query("feed_id") String feed_id, @Query("message") String message, Callback<ReplyMessage> callback);
+
+    @GET("/organizations/get_business_names")
+    public void getBusiness(Callback<ArrayList<Biztag>> callback);
 }

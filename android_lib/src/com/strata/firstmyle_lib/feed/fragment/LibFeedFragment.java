@@ -74,9 +74,6 @@ public class LibFeedFragment extends Fragment implements PostSummaryInflater.Inf
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FeedPost feedPost = postSummaries.get(position);
                 mListener.onDetailClick(feedPost);
-//                if (listener != null) {
-//                    listener.onClick(ActionEnums.DETAIL, feedPost);
-//                }
             }
         });
 
@@ -85,7 +82,7 @@ public class LibFeedFragment extends Fragment implements PostSummaryInflater.Inf
             public void onClick(View v) {
                 //startActivity(new Intent(getActivity(), CreateFeed.class));
                 if (listener != null) {
-                    listener.onClick(ActionEnums.DETAIL, null);
+                    listener.onClick(ActionEnums.CREATE, null);
                 }
             }
         });

@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
                     in = new Intent(context,ChatPage.class);
                     in.putExtra("sPost", new Gson().toJson(sPost));
                     context.startActivity(in);
+                case CREATE:
+                    in = new Intent(context,CreatePostPage.class);
+                    in.putExtra("sPost", new Gson().toJson(sPost));
+                    context.startActivity(in);
                 default:
                     LibShowToast.setText("Clicked => " + action);
                     break;
