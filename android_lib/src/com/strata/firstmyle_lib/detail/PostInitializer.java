@@ -32,19 +32,11 @@ public class PostInitializer {
     }
 
     public Fragment getPostFragment(FeedPost sPost) throws Exception{
-        hashMap.put("Event", EventFragment.class);
-        hashMap.put("Bctc", EventFragment.class);
-        hashMap.put("BlogFeed", EventFragment.class);
-
-        Class<? extends Fragment> cls = hashMap.get(sPost.getType());
-        if(cls!=null){
-            Fragment frag = cls.newInstance();
+            EventFragment frag = new EventFragment();
+            frag.addListener(listener);
             Bundle bundle=new Bundle();
-            bundle.putString("feed",  new Gson().toJson(sPost));
+            bundle.putString("feed", new Gson().toJson(sPost));
             frag.setArguments(bundle);
             return frag;
-        }
-
-        return null;
     }
 }

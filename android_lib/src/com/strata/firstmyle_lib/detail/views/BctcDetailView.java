@@ -53,7 +53,7 @@ public class BctcDetailView extends DetailView {
             subject.setText(bctc.getTitle());
             description.setText(bctc.getDetail());
 
-            if(sPost.getEvent().getImage_urls().getDisplay_url()!=null && !"null".equals(sPost.getEvent().getImage_urls().getDisplay_url())){
+            if(bctc.getImage_urls().getDisplay_url()!=null && !"null".equals(bctc.getImage_urls().getDisplay_url())){
                 try{
                     AppUtils.picasoViewThumb(bctc.getImage_urls(), blog_image, this.getContext());
                 }catch(Exception e){

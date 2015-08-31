@@ -25,9 +25,24 @@ import java.util.HashMap;
 /**
  * Created by hisham on 26/8/15.
  */
-public class DetailPage extends AppCompatActivity {
+public class DetailPage extends AppCompatActivity  implements EventFragment.OnFragmentInteractionListener{
 
     private static Context context;
+
+
+    private static final DetailView.ActionClickListener listener = new DetailView.ActionClickListener() {
+        @Override
+        public void onClick(ActionEnums action, FeedPost sPost) {
+
+            switch (action) {
+                default:
+                    LibShowToast.setText("Clicked => " + action);
+                    break;
+
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,17 +68,18 @@ public class DetailPage extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onInitiatorClick(FeedPost feed) {
 
-    private static final DetailView.ActionClickListener listener = new DetailView.ActionClickListener() {
-        @Override
-        public void onClick(ActionEnums action, FeedPost sPost) {
+    }
 
-            switch (action) {
-                default:
-                    LibShowToast.setText("Clicked => " + action);
-                    break;
+    @Override
+    public void onCommentClick(FeedPost feed) {
 
-            }
-        }
-    };
+    }
+
+    @Override
+    public void onDetailClick(FeedPost feed) {
+        LibShowToast.setText("im here");
+    }
 }

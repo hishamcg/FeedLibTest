@@ -53,9 +53,9 @@ public class BlogFeedDetailView extends DetailView {
             subject.setText(blogFeed.getTitle());
             description.setText(blogFeed.getDetail());
 
-            if(blogFeed.getImage_urls().getDisplay_url()!=null && !"null".equals(sPost.getEvent().getImage_urls().getDisplay_url())){
+            if(blogFeed.getImage_urls().getDisplay_url()!=null && !"null".equals(blogFeed.getImage_urls().getDisplay_url())){
                 try{
-                    AppUtils.picasoViewThumb(sPost.getEvent().getImage_urls(), blog_image, this.getContext());
+                    AppUtils.picasoViewThumb(blogFeed.getImage_urls(), blog_image, this.getContext());
                 }catch(Exception e){
                     blog_image.setVisibility(View.GONE);
                 }

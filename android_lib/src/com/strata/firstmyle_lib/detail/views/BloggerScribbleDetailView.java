@@ -18,7 +18,7 @@ public class BloggerScribbleDetailView extends DetailView {
 
     private View rootView;
 
-    public BloggerScribbleDetailView (Context context,FeedPost sPost, ActionClickListener listener){
+    public BloggerScribbleDetailView (Context context,FeedPost sPost, DetailView.ActionClickListener listener){
         super(context, sPost, listener);
         initialize();
 
@@ -29,14 +29,6 @@ public class BloggerScribbleDetailView extends DetailView {
         rootView = inflater.inflate(R.layout.common_detail_page, null);
 
         if(rootView!=null){
-
-            LinearLayout event_details = (LinearLayout)rootView.findViewById(R.id.event_details);
-            TextView dateFrom = (TextView) rootView.findViewById(R.id.date_from);
-            TextView dateTo = (TextView) rootView.findViewById(R.id.date_to);
-            TextView monthFrom = (TextView) rootView.findViewById(R.id.month_from);
-            TextView monthTo = (TextView) rootView.findViewById(R.id.month_to);
-            TextView dayFrom = (TextView) rootView.findViewById(R.id.month_from);
-            TextView dayTo = (TextView) rootView.findViewById(R.id.month_to);
 
             ImageView blog_image = (ImageView)rootView.findViewById(R.id.blog_image);
             TextView title = (TextView) rootView.findViewById(R.id.title);
@@ -54,13 +46,13 @@ public class BloggerScribbleDetailView extends DetailView {
             TextView date = (TextView)rootView.findViewById(R.id.time);
             date.setText(sPost.getCreated_at());
             initiator_name.setText(sPost.getPublisher().getName() != null ? sPost.getPublisher().getName() : "Hisham");
-            title.setText(sPost.getEvent().getTitle());
-            subject.setText(sPost.getEvent().getTitle());
-            description.setText(sPost.getEvent().getDetail());
+            title.setText(sPost.getBloggerScribble().getTitle());
+            subject.setText(sPost.getBloggerScribble().getTitle());
+            description.setText(sPost.getBloggerScribble().getDetail());
 
-            if(sPost.getEvent().getImage_urls().getDisplay_url()!=null && !"null".equals(sPost.getEvent().getImage_urls().getDisplay_url())){
+            if(sPost.getBloggerScribble().getImage_urls().getDisplay_url()!=null && !"null".equals(sPost.getBloggerScribble().getImage_urls().getDisplay_url())){
                 try{
-                    AppUtils.picasoViewThumb(sPost.getEvent().getImage_urls(), blog_image, this.getContext());
+                    AppUtils.picasoViewThumb(sPost.getBloggerScribble().getImage_urls(), blog_image, this.getContext());
                 }catch(Exception e){
                     blog_image.setVisibility(View.GONE);
                 }
@@ -68,7 +60,7 @@ public class BloggerScribbleDetailView extends DetailView {
             }else{
                 blog_image.setVisibility(View.GONE);
             }
-
+            this.initCommomViews(rootView);
             this.addView(rootView);
         }
     }
