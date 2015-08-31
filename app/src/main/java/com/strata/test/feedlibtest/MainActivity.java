@@ -25,8 +25,7 @@ import com.strata.firstmyle_lib.utils.LibShowToast;
 import java.util.HashMap;
 
 
-public class MainActivity extends AppCompatActivity implements LibFeedFragment.OnFragmentInteractionListener,
-                                                                LibChatFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements LibFeedFragment.OnFragmentInteractionListener{
 
     private static Context context;
     @Override
@@ -34,52 +33,33 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-//        HashMap<String, Class<? extends PostSummary>> hashMap = new HashMap<>();
-//        FeedInitializer fed = new FeedInitializer(listener,hashMap);
-//
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.fragment, fed.getFeed())
-//                .commit();
-
-        HashMap<String, Class<? extends ChatView>> hashMap = new HashMap<>();
-        ChatInitializer fed = new ChatInitializer(chat_listener,hashMap);
+        HashMap<String, Class<? extends PostSummary>> hashMap = new HashMap<>();
+        FeedInitializer fed = new FeedInitializer(listener,hashMap);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment, fed.getChat())
+                .replace(R.id.fragment, fed.getFeed())
                 .commit();
 
+
+
     }
-
-    private static final ChatView.ChatClickListener chat_listener = new ChatView.ChatClickListener() {
-        @Override
-        public void onClick(ActionEnums action, Reply reply) {
-
-            switch (action) {
-                case DETAIL:
-                    Intent in = new Intent(context,DetailPage.class);
-                    in.putExtra("sPost", new Gson().toJson(reply));
-                    context.startActivity(in);
-                    break;
-                default:
-                    LibShowToast.setText("Clicked => " + action);
-                    break;
-
-            }
-        }
-    };
 
     private static final PostView.ActionClickListener listener = new PostView.ActionClickListener() {
         @Override
         public void onClick(ActionEnums action, FeedPost sPost) {
 
+            Intent in;
             switch (action) {
                 case DETAIL:
-                    Intent in = new Intent(context,DetailPage.class);
+                    in = new Intent(context,DetailPage.class);
                     in.putExtra("sPost", new Gson().toJson(sPost));
                     context.startActivity(in);
                     break;
+                case CHAT:
+                    in = new Intent(context,ChatPage.class);
+                    in.putExtra("sPost", new Gson().toJson(sPost));
+                    context.startActivity(in);
                 default:
                     LibShowToast.setText("Clicked => " + action);
                     break;
@@ -104,7 +84,12 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings){
+            return true;
+        }else if(id == R.id.action_chat){
+            Intent in = new Intent(context,ChatPage.class);
+            //in.putExtra("sPost", new Gson().toJson(sPost));
+            context.startActivity(in);
             return true;
         }
 
@@ -127,10 +112,5 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         Intent in = new Intent(context,DetailPage.class);
         in.putExtra("sPost", new Gson().toJson(feed));
         context.startActivity(in);
-    }
-
-    @Override
-    public void onFragmentInteraction() {
-
     }
 }

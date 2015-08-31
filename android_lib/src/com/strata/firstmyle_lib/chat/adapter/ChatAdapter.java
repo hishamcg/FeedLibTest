@@ -12,6 +12,7 @@ import com.strata.firstmyle_lib.chat.views.ChatView;
 import com.strata.firstmyle_lib.utils.LibShowToast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ChatAdapter extends BaseAdapter{
 	private Context context;
@@ -21,11 +22,13 @@ public class ChatAdapter extends BaseAdapter{
     private ChatInflater helper;
     private ChatView.ChatClickListener listener;
 
-	public ChatAdapter(Context context, ArrayList<Reply> reply_list,ChatView.ChatClickListener listener,String publisher_id) {
+	public ChatAdapter(Context context, ArrayList<Reply> reply_list,ChatView.ChatClickListener listener,
+					   String publisher_id,HashMap<String, Class<? extends ChatView>> hash_map) {
 
 		this.context = context;
 		this.reply_list = reply_list;
         this.helper = new ChatInflater(context);
+		helper.addHashMap(hash_map);
         this.listener = listener;
         this.publisher_id = publisher_id;
 	}
@@ -52,7 +55,7 @@ public class ChatAdapter extends BaseAdapter{
 	@Override
 	public View getView(final int position, View rowView, ViewGroup parent) {
         try {
-            rowView = helper.FillView(reply_list.get(position),listener,publisher_id).getRootView();
+            rowView = helper.FillView(reply_list.get(position),listener,publisher_id);
             return rowView;
         }catch (Exception e){
             throw new ClassCastException("View return problem in ChatAdapter\n"+e.getMessage());

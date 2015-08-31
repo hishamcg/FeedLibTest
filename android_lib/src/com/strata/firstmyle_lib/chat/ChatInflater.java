@@ -34,7 +34,7 @@ public class ChatInflater {
 
     }
 
-    public void AddHashMap(HashMap<String, Class<? extends ChatView>> hash_map){
+    public void addHashMap(HashMap<String, Class<? extends ChatView>> hash_map){
         hashMap.putAll(hash_map);
     }
 

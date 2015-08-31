@@ -9,6 +9,7 @@ import com.strata.firstmyle_lib.utils.AppUtils;
 
 import java.io.IOException;
 
+import me.pushy.sdk.Pushy;
 import retrofit.client.Response;
 
 public class GCMRegisterUtils {
@@ -28,6 +29,7 @@ public class GCMRegisterUtils {
                     if (regId.isEmpty()) {
                         regId = GoogleCloudMessaging.getInstance(context).register(googleProjectId);
                         //regId = Pushy.register(context);
+
                         storeRegistrationId(context, regId);
                     }
                     Boolean registered = getPref(context).getBoolean(REGISTERED, false);

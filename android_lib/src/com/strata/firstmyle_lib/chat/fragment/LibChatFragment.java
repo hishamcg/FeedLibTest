@@ -1,6 +1,5 @@
 package com.strata.firstmyle_lib.chat.fragment;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -89,7 +88,7 @@ public class LibChatFragment extends Fragment implements ChatAdapter.AdapterCall
         System.out.println("going for retro");
 
         reply_list.addAll(getDummyData());
-		chat_adapter = new ChatAdapter(getActivity(), reply_list,listener,"123");
+		chat_adapter = new ChatAdapter(getActivity(), reply_list,listener,"123",hashMap);
 		listview.setAdapter(chat_adapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
