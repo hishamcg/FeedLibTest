@@ -60,6 +60,7 @@ public class PostSummaryInflater{
 
     public View FillView(final FeedPost temp_post,PostView.ActionClickListener listener) throws Exception{
         Class<? extends PostSummary> cls = hashMap.get(temp_post.getType());
+        System.out.println(temp_post.getType());
         if(cls!=null){
             PostSummary inf = cls.newInstance();
             return inf.getView(context,temp_post,listener);
@@ -67,23 +68,21 @@ public class PostSummaryInflater{
         return new View(context);
     }
 
-//    @Override
-//    public void onInitiatorClick(FeedPost feed) {
-//        try {
-//            inflaterCallback.onInitiatorClick(feed);
-//        } catch (ClassCastException exception) {
-//            LibShowToast.setText("Internal Error");
-//        }
-//    }
-//
-//    @Override
-//    public void onCommentClick(FeedPost temp_feed) {
-//        try {
-//            inflaterCallback.onCommentClick(temp_feed);
-//        } catch (ClassCastException exception) {
-//            LibShowToast.setText("Internal Error");
-//        }
-//    }
+    public void onInitiatorClick(FeedPost feed) {
+        try {
+            inflaterCallback.onInitiatorClick(feed);
+        } catch (ClassCastException exception) {
+            LibShowToast.setText("Internal Error");
+        }
+    }
+
+    public void onCommentClick(FeedPost temp_feed) {
+        try {
+            inflaterCallback.onCommentClick(temp_feed);
+        } catch (ClassCastException exception) {
+            LibShowToast.setText("Internal Error");
+        }
+    }
 
     public interface InflaterCallback {
         void onInitiatorClick(FeedPost feed);

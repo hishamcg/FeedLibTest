@@ -18,7 +18,7 @@ public class FeedPost {
 
     Bctc bctc;
     BlogFeed blogFeed;
-    BloggerScribble bloggerScribble;
+    BloggerScribble blogger_scribble;
     CivicProblem civicProblem;
     Event event;
     Promotion promotion;
@@ -99,11 +99,11 @@ public class FeedPost {
     }
 
     public BloggerScribble getBloggerScribble() {
-        return bloggerScribble;
+        return blogger_scribble;
     }
 
     public void setBloggerScribble(BloggerScribble bloggerScribble) {
-        this.bloggerScribble = bloggerScribble;
+        this.blogger_scribble = bloggerScribble;
     }
 
     public CivicProblem getCivicProblem() {

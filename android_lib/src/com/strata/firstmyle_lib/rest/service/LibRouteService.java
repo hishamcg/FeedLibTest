@@ -20,7 +20,7 @@ public interface LibRouteService {
     @GET("/validate_otp")
     void validateOTP(@Query("otp") String otp, @Query("phone_no") String phone, Callback<AuthToken> success);
 
-    @GET("/get_dummydata.json")
+    @GET("/fm_consumer/get_dummydata.json")
     void getFeeds( Callback<ArrayList<FeedPost>> callback);
 
     @GET("/feeds/create_action.json")

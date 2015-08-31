@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
 
     @Override
     public void onDetailClick(FeedPost feed) {
-        LibShowToast.setText("Athamma im in detail");
         Intent in = new Intent(context,DetailPage.class);
         in.putExtra("sPost", new Gson().toJson(feed));
         context.startActivity(in);

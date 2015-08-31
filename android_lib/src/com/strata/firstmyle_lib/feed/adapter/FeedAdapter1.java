@@ -57,6 +57,7 @@ public class FeedAdapter1 extends BaseAdapter implements Filterable {
             rowView =helper.FillView(posts.get(position),listener);
             return rowView;
         }catch (Exception e){
+            System.out.println(e.toString());
             LibShowToast.setText(e.getMessage());
         }
         return new View(context);
