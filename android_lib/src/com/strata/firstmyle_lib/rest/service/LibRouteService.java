@@ -1,5 +1,6 @@
 package com.strata.firstmyle_lib.rest.service;
 
+import com.strata.firstmyle_lib.chat.model.ReplyMessage;
 import com.strata.firstmyle_lib.feed.model.FeedPost;
 import com.strata.firstmyle_lib.model.AuthToken;
 
@@ -24,4 +25,7 @@ public interface LibRouteService {
 
     @GET("/feeds/create_action.json")
     void FeedLike(@Query("feed_id") String feed_id, @Query("action_type") String action, Callback<AuthToken> callback);
+
+    @GET("/send_message.json")
+    void sendMessage(@Query("feed_id") String feed_id, @Query("message") String message, Callback<ReplyMessage> callback);
 }

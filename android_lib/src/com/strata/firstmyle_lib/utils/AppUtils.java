@@ -73,6 +73,23 @@ public class AppUtils {
             }
     }
 
+    public static void picasoView(String url, ImageView image, Context context,int round) {
+        if(image!=null)
+            try {
+                if (url != null && !url.isEmpty()) {
+                    Picasso.with(context)
+                            .load(url)
+                            .placeholder(R.drawable.user_placeholder)
+                            .noFade()
+                            .fit().centerCrop()
+                            .transform(new RoundedTransformation(round))
+                            .into(image);
+                }
+            } catch (Exception e) {
+                Log.d("image", "error");
+            }
+    }
+
     public static void setTextView(TextView view, String txt){
         if(view!=null){
             view.setText(txt!=null && !txt.isEmpty()?txt:"");

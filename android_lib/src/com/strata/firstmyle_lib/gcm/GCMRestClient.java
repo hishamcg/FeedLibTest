@@ -30,7 +30,7 @@ public class GCMRestClient {
     }
 
     public interface GcmRegisterService {
-        @GET("/consumers/gcm_register")
+        @GET("/register")
         Response gcmShare(@Query("gcm") String regId);
     }
 }

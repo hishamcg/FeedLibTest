@@ -62,7 +62,6 @@ public class BctcView extends PostView{
 
     public void setRibbon(int drawable) {
         ribbon.setImageResource(drawable);
-
     }
 
     public void setItem_container(ArrayList<FmProduct> dps) {

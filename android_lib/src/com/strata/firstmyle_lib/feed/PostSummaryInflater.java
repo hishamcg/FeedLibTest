@@ -11,6 +11,7 @@ import com.strata.firstmyle_lib.feed.summary_view.BctcSummary;
 import com.strata.firstmyle_lib.feed.summary_view.BlogFeedSummary;
 import com.strata.firstmyle_lib.feed.summary_view.BloggerScribbleSummary;
 import com.strata.firstmyle_lib.feed.summary_view.CivicProblemSummary;
+import com.strata.firstmyle_lib.feed.summary_view.EventSummary;
 import com.strata.firstmyle_lib.feed.summary_view.PostSummary;
 import com.strata.firstmyle_lib.feed.summary_view.PromotionSummary;
 import com.strata.firstmyle_lib.feed.summary_view.RecommendationSummary;
@@ -39,7 +40,7 @@ public class PostSummaryInflater{
         hashMap.put("Article",BloggerScribbleSummary.class);
         hashMap.put("Review",BloggerScribbleSummary.class);
         hashMap.put("Ask",BloggerScribbleSummary.class);
-        //hashMap.put("Event",Event.class);
+        hashMap.put("Event",EventSummary.class);
         hashMap.put("Bctc",BctcSummary.class);
         hashMap.put("BlogFeed",BlogFeedSummary.class);
         hashMap.put("Influencer",BlogFeedSummary.class);

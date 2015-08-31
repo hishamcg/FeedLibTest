@@ -1,9 +1,6 @@
 package com.strata.firstmyle_lib.feed.views;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -13,17 +10,10 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.strata.firstmyle_lib.R;
 import com.strata.firstmyle_lib.feed.model.FeedPost;
-import com.strata.firstmyle_lib.model.AuthToken;
-import com.strata.firstmyle_lib.rest.LibRestClient;
 import com.strata.firstmyle_lib.utils.ActionEnums;
 import com.strata.firstmyle_lib.utils.AppUtils;
-import com.strata.firstmyle_lib.utils.LibShowToast;
-import com.strata.firstmyle_lib.R;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 /**
  * Created by hisham on 25/8/15.

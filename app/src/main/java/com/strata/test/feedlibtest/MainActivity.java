@@ -9,6 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.gson.Gson;
+import com.strata.firstmyle_lib.chat.ChatInitializer;
+import com.strata.firstmyle_lib.chat.fragment.LibChatFragment;
+import com.strata.firstmyle_lib.chat.model.Reply;
+import com.strata.firstmyle_lib.chat.views.ChatView;
 import com.strata.firstmyle_lib.feed.FeedInitializer;
 import com.strata.firstmyle_lib.feed.fragment.LibFeedFragment;
 import com.strata.firstmyle_lib.feed.model.FeedPost;
@@ -30,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         setContentView(R.layout.activity_main);
         context = this;
         HashMap<String, Class<? extends PostSummary>> hashMap = new HashMap<>();
-        hashMap.put("Event", EventSummary.class);
         FeedInitializer fed = new FeedInitializer(listener,hashMap);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -38,18 +41,25 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
                 .replace(R.id.fragment, fed.getFeed())
                 .commit();
 
+
+
     }
 
     private static final PostView.ActionClickListener listener = new PostView.ActionClickListener() {
         @Override
         public void onClick(ActionEnums action, FeedPost sPost) {
 
+            Intent in;
             switch (action) {
                 case DETAIL:
-                    Intent in = new Intent(context,DetailPage.class);
+                    in = new Intent(context,DetailPage.class);
                     in.putExtra("sPost", new Gson().toJson(sPost));
                     context.startActivity(in);
                     break;
+                case CHAT:
+                    in = new Intent(context,ChatPage.class);
+                    in.putExtra("sPost", new Gson().toJson(sPost));
+                    context.startActivity(in);
                 default:
                     LibShowToast.setText("Clicked => " + action);
                     break;
@@ -74,7 +84,12 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings){
+            return true;
+        }else if(id == R.id.action_chat){
+            Intent in = new Intent(context,ChatPage.class);
+            //in.putExtra("sPost", new Gson().toJson(sPost));
+            context.startActivity(in);
             return true;
         }
 
