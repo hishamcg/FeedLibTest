@@ -9,14 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.strata.firstmyle_lib.detail.PostInitializer;
-import com.strata.firstmyle_lib.detail.fragment.EventFragment;
+import com.strata.firstmyle_lib.detail.fragment.PostFragment;
 import com.strata.firstmyle_lib.detail.views.DetailView;
-import com.strata.firstmyle_lib.feed.FeedInitializer;
-import com.strata.firstmyle_lib.feed.fragment.LibFeedFragment;
 import com.strata.firstmyle_lib.feed.model.FeedPost;
-import com.strata.firstmyle_lib.feed.summary_view.EventSummary;
-import com.strata.firstmyle_lib.feed.summary_view.PostSummary;
-import com.strata.firstmyle_lib.feed.views.PostView;
 import com.strata.firstmyle_lib.utils.ActionEnums;
 import com.strata.firstmyle_lib.utils.LibShowToast;
 
@@ -25,7 +20,7 @@ import java.util.HashMap;
 /**
  * Created by hisham on 26/8/15.
  */
-public class DetailPage extends AppCompatActivity  implements EventFragment.OnFragmentInteractionListener{
+public class DetailPage extends AppCompatActivity  implements PostFragment.OnFragmentInteractionListener{
 
     private static Context context;
 

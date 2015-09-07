@@ -19,7 +19,9 @@ import com.strata.firstmyle_lib.feed.model.FeedPost;
 import com.strata.firstmyle_lib.feed.summary_view.EventSummary;
 import com.strata.firstmyle_lib.feed.summary_view.PostSummary;
 import com.strata.firstmyle_lib.feed.views.PostView;
+import com.strata.firstmyle_lib.rest.LibRestClient;
 import com.strata.firstmyle_lib.utils.ActionEnums;
+import com.strata.firstmyle_lib.utils.LibSharedPref;
 import com.strata.firstmyle_lib.utils.LibShowToast;
 
 import java.util.HashMap;
@@ -31,6 +33,11 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LibRestClient.setAuth_token("eu3gvPA3a55-XyLs8Szx");
+        LibSharedPref.setStringValue("NAME", "NAGASHREE");
+        LibSharedPref.setStringValue("EMAIL","nagashree.ashwath@strata.co.in");
+        LibSharedPref.setStringValue("PHONE_NO", "9964408383");
+        LibSharedPref.setStringValue("USER_IMAGE", "https://s3.amazonaws.com/prod.firstmiler.com/images/shoba-acharya.jpg");
         setContentView(R.layout.activity_main);
         context = this;
         HashMap<String, Class<? extends PostSummary>> hashMap = new HashMap<>();
@@ -40,37 +47,34 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment, fed.getFeed())
                 .commit();
-
-
-
     }
 
-    private static final PostView.ActionClickListener listener = new PostView.ActionClickListener() {
-        @Override
-        public void onClick(ActionEnums action, FeedPost sPost) {
+        private static final PostView.ActionClickListener listener = new PostView.ActionClickListener() {
+            @Override
+            public void onClick(ActionEnums action, FeedPost sPost) {
 
-            Intent in;
-            switch (action) {
-                case DETAIL:
-                    in = new Intent(context,DetailPage.class);
-                    in.putExtra("sPost", new Gson().toJson(sPost));
-                    context.startActivity(in);
-                    break;
-                case CHAT:
-                    in = new Intent(context,ChatPage.class);
-                    in.putExtra("sPost", new Gson().toJson(sPost));
-                    context.startActivity(in);
-                case CREATE:
-                    in = new Intent(context,CreatePostPage.class);
-                    in.putExtra("sPost", new Gson().toJson(sPost));
-                    context.startActivity(in);
-                default:
-                    LibShowToast.setText("Clicked => " + action);
-                    break;
+                Intent in;
+                switch (action) {
+                    case DETAIL:
+                        in = new Intent(context,DetailPage.class);
+                        in.putExtra("sPost", new Gson().toJson(sPost));
+                        context.startActivity(in);
+                        break;
+                    case CHAT:
+                        in = new Intent(context,ChatPage.class);
+                        in.putExtra("sPost", new Gson().toJson(sPost));
+                        context.startActivity(in);
+                    case CREATE:
+                        in = new Intent(context,CreatePostPage.class);
+                        in.putExtra("sPost", new Gson().toJson(sPost));
+                        context.startActivity(in);
+                    default:
+                        LibShowToast.setText("Clicked => " + action);
+                        break;
 
+                }
             }
-        }
-    };
+        };
 
 
     @Override
@@ -93,6 +97,14 @@ public class MainActivity extends AppCompatActivity implements LibFeedFragment.O
         }else if(id == R.id.action_chat){
             Intent in = new Intent(context,ChatPage.class);
             //in.putExtra("sPost", new Gson().toJson(sPost));
+            context.startActivity(in);
+            return true;
+        }else if(id == R.id.action_mentions){
+            Intent in = new Intent(context,SimpleMentions.class);
+            context.startActivity(in);
+            return true;
+        }else if(id == R.id.action_payment){
+            Intent in = new Intent(context,PaymentActivity.class);
             context.startActivity(in);
             return true;
         }
